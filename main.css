@@ -24,8 +24,6 @@ body, html {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  -ms-align-items: flex-start;
-  align-items: flex-start;
 }
 
 .main {
@@ -36,10 +34,16 @@ body, html {
 .aside {
   width: 200px;
   flex-shrink: 0;
-  padding: 0 20px;
+  position: relative;
+}
+
+.aside__wrap {
   background: #FF6D00;
+  width: 100%;
+  padding: 20px;
 }
 
 .aside__title {
   text-align: center;
+  margin: 0;
 }
