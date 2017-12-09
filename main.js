@@ -6,16 +6,17 @@ function init() {
 
     this._event = () => {
       window.addEventListener('scroll', () => {
-        // если положение верха родительского блока выше верхнего края экрана
-        if(parentId.getBoundingClientRect().top <= 0) {
-          asideId.style.transform = `translateY(${-parentId.getBoundingClientRect().top}px)`;
-        }
+        console.log(parentId.getBoundingClientRect().bottom - asideId.getBoundingClientRect().bottom);
         // если положение верха родительского блока ниже верхнего края экрана
-        else if(parentId.getBoundingClientRect().top > 0) {
+        if(parentId.getBoundingClientRect().top > 0) {
           asideId.style.transform = `translateY(0)`;
         }
+        // если положение верха родительского блока выше верхнего края экрана
+        else if(parentId.getBoundingClientRect().top <= 0 && -parentId.getBoundingClientRect().top <= (parentId.getBoundingClientRect().height - asideId.getBoundingClientRect().height)) {
+          asideId.style.transform = `translateY(${-parentId.getBoundingClientRect().top}px)`;
+        }
         // если перемещающийся блок достиг низа родителя
-        if(parentId.getBoundingClientRect().bottom <= asideId.getBoundingClientRect().bottom) {
+        else {
           asideId.style.transform = `translateY(${parentId.getBoundingClientRect().height - asideId.getBoundingClientRect().height}px)`;
         }
       })
